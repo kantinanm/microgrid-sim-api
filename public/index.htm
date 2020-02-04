@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+v1 {
+  border-bottom-style: solid;
+  border-bottom-color: green;
+}
+v2 {
+  border-left-style: solid;
+  border-left-color: green;
+}
+</style>
+
+  <!--<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>-->
+<!--  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+  <!-- This is what you need 
+  <script src="sweetalert/dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ </head>
+
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+ <body>
+
+<h1 class="display-4">MicroGrid Simulator_ Demo 01</h1>
+<hr class="my-4">
+
+<form >
+	
+
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-3">
+	 <img src="img/transformer.png" class="ounded mx-auto d-block" alt="...">
+	</div>
+	<div class="col-md-5"></div> 
+</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-5"></div>
+	<div class="col-sm-1">
+		<img src="img/Line-vertical02.png" class="rounded mx-auto d-block" alt="...">
+	</div>
+   <div class="col-md-6"></div>
+</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-sm-3">
+		<img src="img/Line-horizontal02.png" class="rounded mx-auto d-block" alt="...">
+	<div class="col-md-5"></div>
+</div>
+</div>
+
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-5"></div>
+	<div class="col-sm-1">
+		<img src="img/Line-vertical03.png" class="rounded mx-auto d-block" alt="...">
+	</div>
+
+	<div class="col-sm-3">
+	<div class="card border-light mb-3" style="width: 18rem;">
+		<div class="card-body">
+		<div class="row">
+		<div class="col-sm-5"> V (pu) </div>
+		<div class="col-sm-7"> 
+			<div class="alert alert-info" role="alert">
+		       <div id="lblOutput01">Output01</div>
+            </div>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-sm-5"> Angle (o) </div>
+		  <div class="col-sm-7"> 
+			<div class="alert alert-success " role="alert">
+		    		<div id="lblOutput02">Output02</div>
+       		 </div>
+		  </div>
+		</div>
+	</div>
+  </div>
+   <div class="col-md-3"></div>
+</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-5"></div>
+	<div class="col-sm-1">
+		<img src="img/Box_close.png" class="rounded mx-auto d-block" alt="...">
+	</div>
+   <div class="col-md-6"></div>
+</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-2">
+
+
+	<div class="card bg-light mb-3" style="max-width: 18rem;">
+	<div class="row">
+    <div class="col-sm-4"> Switch </div>
+    <div class="col-sm-8">         
+	  <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="1">
+          <label class="form-check-label" for="gridRadios2">
+            Close
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="0" >
+          <label class="form-check-label" for="gridRadios3">
+           Open
+          </label>
+     </div> 
+	</div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4"> Line (m) </div>
+    <div class="col-sm-8"> <input type="text" class="form-control" name="Input08" id="Input08" placeholder=""> </div>
+	</div>
+</div>
+</div>
+
+ <div class="col-sm-1">
+	<img src="img/Line-vertical.png" class="rounded mx-auto d-block" alt="...">
+</div>
+<div class="col-md-4"> </div>
+
+<div class="col-md-2">
+	<input class="btn btn-success btn-lg" type="button" value="Submit" onClick="process()">
+	<input class="btn btn-warning btn-lg" type="reset" value="Reset">
+</div>
+
+</div>
+</div>
+
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-3"> 
+  <div class="card border-light mb-3" style="width: 18rem;">
+  <div class="card-body">
+	<div class="row">
+    <div class="col-sm-5"> V (pu) </div>
+    <div class="col-sm-7">
+        <div class="alert alert-info" role="alert">
+		    <div id="lblOutput03">Output03</div>
+        </div>
+      </div>
+	</div>
+	<div class="row">
+    <div class="col-sm-5"> Angle (o) </div>
+      <div class="col-sm-7"> 
+    	<div class="alert alert-success " role="alert">
+		    <div id="lblOutput04">Output04</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+ </div>
+
+<div class="col-md-2"></div>
+<div class="col-sm-1">
+	<img src="img/Line-vertical.png" class="rounded mx-auto d-block" alt="...">
+</div>
+
+<div class="col-md-2"> 
+  <div class="card border-light mb-3" style="width: 18rem;">
+  <div class="card-body">
+	<div class="row">
+    <div class="col-sm-4"> Pmain (kW) </div>
+    <div class="col-sm-8"> 
+            <div class="alert alert-primary" role="alert">
+		    	<div id="lblOutput05">Output05</div>
+        	</div>
+    </div>
+	</div>
+	<div class="row">
+    <div class="col-sm-4"> Qmain (kVar) </div>
+      <div class="col-sm-8"> 
+    	     <div class="alert alert-warning" role="alert">
+					<div id="lblOutput06">Output06</div>
+   			 </div>
+      </div>
+    </div>
+  </div>
+  </div>
+ </div>
+
+ <div class="col-md-4"></div>
+
+</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+<div class = "col">
+	<img src="img/Line-horizontal.png" class="rounded mx-auto d-block" alt="Responsive image">
+</div>
+</div>
+</div>
+
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2"></div> 
+<div class="col-sm-2">
+	<img src="img/Line-vertical.png" class="rounded mx-auto d-block" alt="...">
+</div>
+<div class="col-md-2"></div> 
+<div class="col-sm-2">
+	<img src="img/Line-vertical.png" class="rounded mx-auto d-block" alt="...">
+</div>
+<div class="col-md-2"></div> 
+</div>
+</div>
+
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-md-2" align="right"> 
+  <div class="card border-light mb-3" style="width: 18rem;">
+  <div class="card-body">
+	<div class="row">
+    <div class="col-sm-4"> Pload (kW) </div>
+    <div class="col-sm-8"> 
+    <div class="alert alert-primary" role="alert">
+		<div id="lblOutput07">Output07</div>
+    </div>
+    </div>
+	</div>
+	<div class="row">
+    <div class="col-sm-4"> Qload (kVar) </div>
+    <div class="col-sm-8"> 
+    	    <div class="alert alert-warning" role="alert">
+					<div id="lblOutput08">Output08</div>
+   			 </div>
+    </div>
+    </div>
+  </div>
+  </div>
+ </div>
+
+  <div class="col-md-2">
+  <div class="card" style="width: 18rem;">
+  <img src="img/homepage.png" class="card-img-top" alt="...">
+  <div class="card bg-light mb-3" style="max-width: 18rem;">
+    <div class="form-group">
+ <label for="formGroupExampleInput">Load (Input)</label>
+  <div class="row">
+    <div class="col-sm-4"> P (kW) </div>
+     <div class="col-sm-8"> <input type="text" class="form-control" name="Input02" id="Input02" placeholder="0.000"> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"> PF </div>
+     <div class="col-sm-8"> <input type="text" class="form-control" name="Input03" id="Input03" placeholder="0-1"> </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">  </div>
+    <div class="col-sm-8">         
+	 
+	 <div class="form-check">
+          <input class="form-check-input" type="radio" name="rdoPFLoad" id="rdoPFLoad2" value="1">
+          <label class="form-check-label" for="rdoPFLoad2">
+            Lead
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="rdoPFLoad" id="rdoPFLoad3" value="0" >
+          <label class="form-check-label" for="rdoPFLoad3">
+           lag
+          </label>
+     </div> 
+	</div>
+  </div>
+
+   </div>
+  </div>
+  </div>
+ </div>
+  <div class="col-md-2"> </div>
+
+  <div class="col-md-2" align="right">
+    <div class="card" style="width: 18rem;">
+  <img src="img/solar-cell.png" class="card-img-top" alt="...">
+  <div class="card bg-light mb-3" style="max-width: 18rem;">
+    <div class="form-group" align="left">
+ <label for="formGroupExampleInput">PV (Input)</label>
+  <div class="row">
+    <div class="col-sm-4"> P (kW) </div>
+     <div class="col-sm-8"> <input type="text" class="form-control" name="Input05" id="Input05" placeholder="0.000"> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"> PF </div>
+     <div class="col-sm-8"> <input type="text" class="form-control" name="Input06" id="Input06" placeholder="0-1"> </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">  </div>
+    <div class="col-sm-8">         
+	 
+	 <div class="form-check">
+          <input class="form-check-input" type="radio" name="rdoPFpv" id="rdoPFpv2" value="1">
+          <label class="form-check-label" for="rdoPFpv2">
+            Lead
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="rdoPFpv" id="rdoPFpv3" value="0" >
+          <label class="form-check-label" for="rdoPFpv3">
+           lag
+          </label>
+     </div> 
+	</div>
+  </div>
+
+   </div>
+  </div>
+  </div>
+ </div>
+
+<div class="col-md-2" align="left"> 
+<div class="card border-light mb-3" style="width: 18rem;">
+  <div class="card-body">
+	<div class="row">
+    <div class="col-sm-4"> Ppv (kW) </div>
+    <div class="col-sm-8"> 
+        <div class="alert alert-primary" role="alert">
+		    <div id="lblOutput09">Output09</div>
+        </div>
+    </div>
+	</div>
+	<div class="row">
+    <div class="col-sm-4"> Qpv (kVar) </div>
+    <div class="col-sm-8"> 
+        	 <div class="alert alert-warning" role="alert">
+					<div id="lblOutput10">Output10</div>
+   			 </div>
+    </div>
+  </div>
+ </div>
+ </div>
+</div>
+
+
+   </div>
+  </div>
+  </div>
+   
+  </div>
+ <!--</div>-->
+
+</form>
+
+
+ <div class="row">
+  <div class="col-md-4"> </div>
+  <div class="col-md-4"> </div>
+  <div class="col-md-4"> </div>
+ </div>
+ 
+
+
+<!--</div>-->
+
+<hr class="display">Icon from www.flaticon.com</hr>
+
+ </body>
+	  <script type="text/javascript">
+
+		  $(document).ready(function () {
+        swal("Hello world!");
+		  });
+		  
+		  
+		  function process(){
+			  
+			  
+			  		$.ajax
+					({
+						type: "POST",
+						url: "calculate",
+						dataType: 'json',
+						contentType : 'application/json; charset=utf-8',
+						data: JSON.stringify({ 
+							'input01': $('input[type=radio][name=gridRadios]').val(),
+							'input02':$("#Input02").val(),
+							'input03':$("#Input03").val(),
+							'input04':$('input[type=radio][name=rdoPFLoad]').val(),
+							'input05':$("#Input05").val(),
+							'input06':$("#Input06").val(),
+							'input07':$('input[type=radio][name=rdoPFpv]').val(),
+							'input08':$("#Input08").val(),
+						}),
+						success: function (result) {
+							console.log(result);
+							if(result.success==1){
+								console.log("process completed.");
+								//after success
+
+								swal({title: "ประมวลผลเรียบร้อยแล้ว",      type: "success",confirmButtonColor: "#3333FF",   confirmButtonText: "OK",   closeOnConfirm: false });
+								
+								//$("#btnSave").attr('disabled','disabled');
+								//.attr('disabled','disabled')
+
+							}else{
+								console.log("fail to update.");
+								swal({title: "เกิดข้อผิดพลาดในการประมวลผล",  type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+							}
+						}
+					});
+			  
+		  }
+		  
+		  
+	  </script>
+</html>

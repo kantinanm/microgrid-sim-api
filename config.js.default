@@ -1,0 +1,8 @@
+exports.pythonApp = {
+    "path": "",
+    "mainFileAppPy": "",
+    "fileNameInput": "",
+    "fileNameOutput": "",
+    "pathInput":"",
+    "pathOutput":"",
+}
