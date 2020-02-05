@@ -2,12 +2,12 @@
 UI and API service to create csv input and activate DigSILENT to execute in whole project script that created by Python language.  
 # How to install
 Use powershell or cmd and type by order, please see below.
-- 1. `git clone https://github.com/kantinanm/microgrid-sim-api.git
-- 2. `cd microgrid-sim-api
-- 3. > install package dependency in this project.
-    ` npm install
-- 4. > create config.js and modify value.
-  ` cp config.js.default config.js
+- `git clone https://github.com/kantinanm/microgrid-sim-api.git`
+- `cd microgrid-sim-api`
+- > install package dependency in this project.
+    `npm install`
+- > create config.js and modify value.
+  `cp config.js.default config.js`
   > at config.js file to modify value, 
   ```javascript
    exports.mode = 'production';
@@ -19,7 +19,7 @@ Use powershell or cmd and type by order, please see below.
     "pathInput":"", //Destination path to store csv input, eg. D://Microgrid
     "pathOutput":"", //Destination path to store csv output, eg. D://Microgrid
   }
-- 5.` node run start
+- 5.`node run start`
 
 
 # Test URL
