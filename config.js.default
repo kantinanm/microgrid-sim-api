@@ -1,3 +1,4 @@
+exports.mode = 'production';
 exports.pythonApp = {
     "path": "",
     "mainFileAppPy": "",

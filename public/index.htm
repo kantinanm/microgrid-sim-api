@@ -22,12 +22,18 @@ v2 {
   <!--<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>-->
 <!--  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>-->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 
-
-  <!-- This is what you need 
-  <script src="sweetalert/dist/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">-->
+  <!-- This is what you need -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <script>
+    var socket = io();
+    socket.on('connect', () => {
+      console.log('Connected to server');
+    });
+
+  </script>
 
  </head>
 
@@ -403,7 +409,29 @@ v2 {
 		  
 		  
 		  function process(){
-			  
+        
+        socket.emit('process', {
+          input01: $('input[type=radio][name=gridRadios]').val(),
+          input02: $("#Input02").val(),
+          input03: $("#Input03").val(),
+          input04: $('input[type=radio][name=rdoPFLoad]').val(),
+          input05: $("#Input05").val(),
+          input06: $("#Input06").val(),
+          input07: $('input[type=radio][name=rdoPFpv]').val(),
+          input08: $("#Input08").val(),
+        }, function (data) {
+          console.log('Got it', data);
+          console.log(data);
+							if(data.success==1){
+								console.log("process completed.");
+                swal({title: "ประมวลผลเรียบร้อย",    icon: "success"   , button: "OK",   closeModal: false });
+							}else{
+								console.log("fail to process.");
+                swal({title: "เกิดข้อผิดพลาดในการประมวลผล",  icon: "warning",   button: "OK",   closeModal: false });
+							}
+        });
+
+        return;
 			  
 			  		$.ajax
 					({
@@ -427,14 +455,14 @@ v2 {
 								console.log("process completed.");
 								//after success
 
-								swal({title: "ประมวลผลเรียบร้อยแล้ว",      type: "success",confirmButtonColor: "#3333FF",   confirmButtonText: "OK",   closeOnConfirm: false });
+								swal({title: "รอสักคู่....กำลังประมวลผล",    icon: "success"   , button: "OK",   closeModal: false });
 								
 								//$("#btnSave").attr('disabled','disabled');
 								//.attr('disabled','disabled')
 
 							}else{
 								console.log("fail to update.");
-								swal({title: "เกิดข้อผิดพลาดในการประมวลผล",  type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+								swal({title: "เกิดข้อผิดพลาดในการประมวลผล",  icon: "warning",   button: "OK",   closeModal: false });
 							}
 						}
 					});

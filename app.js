@@ -25,15 +25,10 @@ app.get('/', function(req, res) {
 });
 
 app.post('/calculate', function (req, res) {
-    /*var opt = {
-      'username': req.body.txtUsr,
-      'password': req.body.txtPwd,
-    }
+    /*
       res.json(opt);
     }*/
-
-    var result = {
-        'success':1,
+    var opt = {
         'input01': req.body.input01,
         'input02': req.body.input02,
         'input03': req.body.input03,
@@ -44,18 +39,54 @@ app.post('/calculate', function (req, res) {
         'input08': req.body.input08,
     }
 
-    util.createCSVInput(result, function (data) {
+    util.createCSVInput(opt, function (data) {
         console.log("create file completed.");  
         console.log(data);  
     });
 
-    util.executeDigSILENT(result, function (data) {
+    var  result = {
+        'success':1
+    }
+    util.executeDigSILENT(opt, function (data) {
+
         console.log("execute completed.");  
-        console.log(data.toString());  
+        console.log(data);  
     });
 
-    //console.log(result);      // your JSON
-    res.send(result);    // echo the result back
+    res.send(result); 
+});
+
+io.on('connection', (socket) => {
+    console.log('New client connected.');
+
+    socket.on('process', (data_opt, callback) => {
+        console.log('process', data_opt);
+        var  result ;
+
+        util.createCSVInput(data_opt, function (data) {
+            console.log("create file completed.");  
+            console.log(data);  
+        });
+    
+        util.executeDigSILENT(data_opt, function (data) {
+            console.log("execute completed.");  
+            console.log(data);  
+            result = {
+                'success':1,
+                'data':data
+            }
+
+            util.readOutput( function (stream_output) {
+                result = {
+                    'success':1,
+                    'data':stream_output
+                }
+                callback(result);
+            });
+
+        });
+
+      });
 });
 
 server.listen(port, () => {
