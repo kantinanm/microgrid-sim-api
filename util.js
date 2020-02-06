@@ -85,16 +85,23 @@ exports.readOutput = function (cb) {
     const  outputModify = [];
     (async () => {
 
-        let targetFile =config.pythonApp.pathOutput+'//'+config.pythonApp.fileNameOutput;
+        let targetFile;
         let readStr;
         
         if(config.mode=='production'){
-             readStr = fs.createReadStream(targetFile);
-             console.log("start reader "+targetFile);
+            targetFile =config.pythonApp.pathOutput+'//'+config.pythonApp.fileNameOutput;
         }else{
-             readStr = fs.createReadStream(config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput);
-             console.log("start reader "+config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput);
+            targetFile = config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput;
         }
+          console.log("start reader "+targetFile);
+          readStr = fs.createReadStream(targetFile);
+
+          if (fs.existsSync(targetFile)) {
+            //file exists
+            console.log("file exists.");
+          }else{
+            console.log("file not exists.");
+          }
             readStr.on('data', (chunk) => {
                 console.log(Buffer.from(chunk).toString());
                 output.push(Buffer.from(chunk).toString());

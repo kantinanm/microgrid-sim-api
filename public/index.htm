@@ -440,6 +440,20 @@ v2 {
         $("#btnSubmit").attr('disabled','disabled');
         //$("#txtFilterFullname").removeAttr('disabled');
 
+        var inputOpt = {
+          input01: $('input[type=radio][name=gridRadios]').val(),
+          input02: $("#Input02").val(),
+          input03: $("#Input03").val(),
+          input04: $('input[type=radio][name=rdoPFLoad]').val(),
+          input05: $("#Input05").val(),
+          input06: $("#Input06").val(),
+          input07: $('input[type=radio][name=rdoPFpv]').val(),
+          input08: $("#Input08").val(),
+        };
+
+        console.log("input list.");
+        console.log(inputOpt);
+
         socket.emit('process', {
           input01: $('input[type=radio][name=gridRadios]').val(),
           input02: $("#Input02").val(),
