@@ -2,8 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
+  <meta name="Author" content="Kantinan Makmee">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,12 +43,15 @@ v2 {
 
  <body>
 
-<h1 class="display-4">MicroGrid Simulator_ Demo 01</h1>
+  <div class="row">
+    <div class="col-md-8"><h1 class="display-4">MicroGrid Simulator_ Demo 01</h1></div>
+    <div class="col-md-4">
+      <img src="img/eng_logo_125.png" class="responsesive" alt="">
+    </div>
+  </div>
 <hr class="my-4">
 
 <form >
-	
-
 
 <div class="container-fluid">
 <div class="row">
@@ -161,8 +163,8 @@ v2 {
 <div class="col-md-4"> </div>
 
 <div class="col-md-2">
-	<input class="btn btn-success btn-lg" type="button" value="Submit" onClick="process()">
-	<input class="btn btn-warning btn-lg" type="reset" value="Reset">
+	<input class="btn btn-success btn-lg" id="btnSubmit" type="button" value="Submit" onClick="process()">
+	<input class="btn btn-warning btn-lg" id="btnClear" type="reset" value="Reset">
 </div>
 
 </div>
@@ -405,11 +407,37 @@ v2 {
 
 		  $(document).ready(function () {
         swal("Hello world!");
+
+        $('input[type=radio][name=gridRadios]').change(function() {
+
+        if (this.value == 1) {
+            console.log("switch off");
+        }
+        else {
+            console.log("switch on");
+        }
+        });
+
+        $('#btnClear').click(function() {
+              $("#btnSubmit").removeAttr('disabled');
+              $("#lblOutput01").html("Output01");
+              $("#lblOutput02").html("Output02");
+              $("#lblOutput03").html("Output03");
+              $("#lblOutput04").html("Output04");
+              $("#lblOutput05").html("Output05");
+              $("#lblOutput06").html("Output06");
+              $("#lblOutput07").html("Output07");
+              $("#lblOutput08").html("Output08");
+        });
+
 		  });
 		  
 		  
 		  function process(){
         
+        $("#btnSubmit").attr('disabled','disabled');
+        //$("#txtFilterFullname").removeAttr('disabled');
+
         socket.emit('process', {
           input01: $('input[type=radio][name=gridRadios]').val(),
           input02: $("#Input02").val(),
@@ -425,6 +453,15 @@ v2 {
 							if(data.success==1){
 								console.log("process completed.");
                 swal({title: "ประมวลผลเรียบร้อย",    icon: "success"   , button: "OK",   closeModal: false });
+                $("#lblOutput01").html(data.data[0]);
+                $("#lblOutput02").html(data.data[1]);
+                $("#lblOutput03").html(data.data[2]);
+                $("#lblOutput04").html(data.data[3]);
+                $("#lblOutput05").html(data.data[4]);
+                $("#lblOutput06").html(data.data[5]);
+                $("#lblOutput07").html(data.data[6]);
+                $("#lblOutput08").html(data.data[7]);
+
 							}else{
 								console.log("fail to process.");
                 swal({title: "เกิดข้อผิดพลาดในการประมวลผล",  icon: "warning",   button: "OK",   closeModal: false });

@@ -33,6 +33,7 @@
     "express": "^4.17.1",
     "get-stream": "^5.1.0",
     "html-to-json": "^0.6.0",
+    "lodash": "^4.17.15",
     "path": "^0.12.7",
     "python-shell": "^1.0.8",
     "socket.io": "^2.3.0"

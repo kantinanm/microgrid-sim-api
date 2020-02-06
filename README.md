@@ -7,10 +7,11 @@ Use powershell or cmd and type by order, please see below.
 - > install package dependency in this project.
     `npm install`
 - > create config.js and modify value.
-  `cp config.js.default config.js`
+  `cp config.js.default config.js` 
+  > In windows use command `copy config.js.default config.js` 
   > at config.js file to modify value, 
   ```javascript
-   exports.mode = 'production';
+   exports.mode = 'production'; // for test use exports.mode = 'debug' 
    exports.pythonApp = {
     "path": "C://Program Files//DIgSILENT//PowerFactory 15.2//Python//3.3", // path to keep python project, eg. C://Program Files//DIgSILENT/xxxx
     "mainFileAppPy": "",// python file to execute project, eg. xxx.py
@@ -19,7 +20,7 @@ Use powershell or cmd and type by order, please see below.
     "pathInput":"", //Destination path to store csv input, eg. D://Microgrid
     "pathOutput":"", //Destination path to store csv output, eg. D://Microgrid
   }
-- 5.`node run start`
+- `npm run start`
 
 
 # Test URL

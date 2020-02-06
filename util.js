@@ -1,8 +1,7 @@
 var fs = require("fs");
 var endOfLine = require('os').EOL;
-const getStream = require('get-stream');
 var  {PythonShell} = require('python-shell');
-
+const _ = require('lodash');
 
 var config = require('./config');
 
@@ -26,8 +25,7 @@ exports.createCSVInput = function (opt, cb) {
     stream.write(endOfLine);
     stream.write(opt.input08);
     
-    const readStream = fs.createReadStream(config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput);
-    let data = [];
+    const data = [];
 
     (async () => {
         const readStream = fs.createReadStream(config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput);
@@ -39,7 +37,7 @@ exports.createCSVInput = function (opt, cb) {
 
         await readStream.on('end', function () {
             console.log("read finish.");
-            cb(data);
+            cb(data.toString().split(/\r?\n/));
         });
 
     })();
@@ -49,7 +47,7 @@ exports.createCSVInput = function (opt, cb) {
   exports.executeDigSILENT = function (opt, cb) {
     console.log("let execute.");
     
-    var target =config.pythonApp.path+'//'+config.pythonApp.mainFileAppPy;
+    let target =config.pythonApp.path+'//'+config.pythonApp.mainFileAppPy;
     var pyshell ;
     
     if(config.mode=='production'){
@@ -83,18 +81,31 @@ exports.createCSVInput = function (opt, cb) {
 
 exports.readOutput = function (cb) {
     console.log("let reader.");
-    let output = [];
+    const  output = [];
+    const  outputModify = [];
     (async () => {
-        const readStr = fs.createReadStream(config.pythonApp.pathOutput+'//'+config.pythonApp.fileNameOutput);
-        console.log("start reader "+config.pythonApp.fileNameOutput);
+
+        let targetFile =config.pythonApp.pathOutput+'//'+config.pythonApp.fileNameOutput;
+        let readStr;
+        
+        if(config.mode=='production'){
+             readStr = fs.createReadStream(targetFile);
+             console.log("start reader "+targetFile);
+        }else{
+             readStr = fs.createReadStream(config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput);
+             console.log("start reader "+config.pythonApp.pathInput+'//'+config.pythonApp.fileNameInput);
+        }
             readStr.on('data', (chunk) => {
                 console.log(Buffer.from(chunk).toString());
                 output.push(Buffer.from(chunk).toString());
             });
-
         await readStr.on('end', function () {
                 console.log("read output finish.");
-                cb(output);
+                _.map(output.toString().split(/\r?\n/), (val, key) => {
+                    outputModify.push(val);
+                 });
+                cb(outputModify);
             });
     })();
 }
+
