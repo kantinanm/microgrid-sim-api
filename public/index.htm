@@ -441,13 +441,13 @@ v2 {
         //$("#txtFilterFullname").removeAttr('disabled');
 
         var inputOpt = {
-          input01: $('input[type=radio][name=gridRadios]').val(),
+          input01: $("input[name='gridRadios']:checked").val(),
           input02: $("#Input02").val(),
           input03: $("#Input03").val(),
-          input04: $('input[type=radio][name=rdoPFLoad]').val(),
+          input04: $("input[name='rdoPFLoad']:checked").val(),
           input05: $("#Input05").val(),
           input06: $("#Input06").val(),
-          input07: $('input[type=radio][name=rdoPFpv]').val(),
+          input07: $("input[name='rdoPFpv']:checked").val(),
           input08: $("#Input08").val(),
         };
 
@@ -455,13 +455,13 @@ v2 {
         console.log(inputOpt);
 
         socket.emit('process', {
-          input01: $('input[type=radio][name=gridRadios]').val(),
+          input01: $("input[name='gridRadios']:checked").val(),
           input02: $("#Input02").val(),
           input03: $("#Input03").val(),
-          input04: $('input[type=radio][name=rdoPFLoad]').val(),
+          input04: $("input[name='rdoPFLoad']:checked").val(),
           input05: $("#Input05").val(),
           input06: $("#Input06").val(),
-          input07: $('input[type=radio][name=rdoPFpv]').val(),
+          input07: $("input[name='rdoPFpv']:checked").val(),
           input08: $("#Input08").val(),
         }, function (data) {
           console.log('Got it', data);
@@ -495,13 +495,13 @@ v2 {
 						dataType: 'json',
 						contentType : 'application/json; charset=utf-8',
 						data: JSON.stringify({ 
-							'input01': $('input[type=radio][name=gridRadios]').val(),
+							'input01': $("input[name='gridRadios']:checked").val(),
 							'input02':$("#Input02").val(),
 							'input03':$("#Input03").val(),
-							'input04':$('input[type=radio][name=rdoPFLoad]').val(),
+							'input04':$("input[name='rdoPFLoad']:checked").val(),
 							'input05':$("#Input05").val(),
 							'input06':$("#Input06").val(),
-							'input07':$('input[type=radio][name=rdoPFpv]').val(),
+							'input07':$("input[name='rdoPFpv']:checked").val(),
 							'input08':$("#Input08").val(),
 						}),
 						success: function (result) {
